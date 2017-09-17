@@ -3,15 +3,10 @@ class BibleVerse::CLI
     puts "Topical Bible Verses"
     list_topics
     menu
-    goodbye
   end
 
   def list_topics
-    puts "Topical Bible Verses"
-    puts <<~DOC
-      1. Peace Bible Verses - Bible Verses About Peace - Description
-      2. Encouraging Bible Verses - Encouraging Bible Verses and Quotes - Description
-    DOC
+    @topics = BibleVerse::FeaturedTopics.list_topics
   end
 
   def menu
@@ -27,6 +22,8 @@ class BibleVerse::CLI
         puts "Showing Encouraging Bible Verses and Quotes"
       when "list"
         list_topics
+      when "exit"
+        goodbye
       else
         puts "Not sure what you mean, type list or exit."
       end
