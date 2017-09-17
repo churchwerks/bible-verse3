@@ -6,7 +6,7 @@ class BibleVerse::CLI
   end
 
   def list_topics
-    @topics = BibleVerse::FeaturedTopics.list_topics
+    @topics = BibleVerse::Topics.list_topics
   end
 
   def menu

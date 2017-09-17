@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
-require './lib/bible_verse'
+
+require "bundler/setup"
+require "./lib/bible_verse"
 
 BibleVerse::CLI.new.call

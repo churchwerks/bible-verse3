@@ -1,4 +1,4 @@
 class BibleVerse::Verse
-  attr_accessor :book, :chap, :verse, :url
+  attr_accessor :book, :chapter, :verse, :url
 
 end
