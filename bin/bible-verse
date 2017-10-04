@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
+require './lib/bible_verse'
 
-puts "hello world"
+BibleVerse::CLI.new.call
