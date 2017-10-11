@@ -1,4 +1,5 @@
 class BibleVerse::CLI
+
   def call
     puts "Topical Bible Verses"
     list_topics
@@ -9,10 +10,9 @@ class BibleVerse::CLI
     @topics = BibleVerse::Topics.list_topics
     @topics.each do |topic|
       counter = 1
-      puts "  #{counter}.#{topic.category}"
+      puts "  #{counter}. #{topic.category}"
       counter += 1
     end
-
   end
 
   def display_topic
@@ -26,7 +26,7 @@ class BibleVerse::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the Topical Bible Verses you would like to search:
+      puts "Enter the number of the Topical Bible Verse you would like to search:
       or type list to see more, or exit to quit."
       input = gets.strip.downcase
       case input

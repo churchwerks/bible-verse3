@@ -1,8 +1,9 @@
 class BibleVerse::Verse
   attr_accessor :book, :chapter, :number, :body, :url
+  @@all_topics = []
+  @@all_verses = []
 
   def self.list_verse
-
     verse_1 = self.new
     verse_1.book = "Colossians"
     verse_1.chapter = "3"
