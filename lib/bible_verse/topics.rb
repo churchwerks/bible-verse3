@@ -2,10 +2,6 @@ class BibleVerse::Topics
   attr_accessor :category, :title, :description, :url
 
   def self.list_topics
-    puts <<~DOC
-      1. Peace Bible Verses - Bible Verses About Peace - Description
-      2. Encouraging Bible Verses - Encouraging Bible Verses and Quotes - Description
-    DOC
 
     topic_1 = self.new
     topic_1.category = "Peace Bible Verses"

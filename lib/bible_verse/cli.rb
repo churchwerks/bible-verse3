@@ -23,14 +23,10 @@ class BibleVerse::CLI
       when "list"
         list_topics
       when "exit"
-        goodbye
+        puts "Peace be with you"
       else
         puts "Not sure what you mean, type list or exit."
       end
     end
-  end
-
-  def goodbye
-    puts "Peace be with you"
   end
 end
