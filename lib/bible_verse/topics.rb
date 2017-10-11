@@ -16,4 +16,8 @@ class BibleVerse::Topics
     topic_2.url = "http://www.biblestudytools.com/topical-verses/encouraging-bible-verses/"
     [topic_1, topic_2]
   end
+
+  def scrape_topics
+
+  end
 end

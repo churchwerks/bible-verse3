@@ -15,6 +15,14 @@ class BibleVerse::CLI
 
   end
 
+  def display_topic
+    puts "Displaying Topic"
+  end
+
+  def display_verse
+    puts "Displaying Verse"
+  end
+
   def menu
     input = nil
     while input != "exit"
@@ -24,6 +32,7 @@ class BibleVerse::CLI
       case input
       when "1"
         puts "Showing Bible Verses About Peace"
+
       when "2"
         puts "Showing Encouraging Bible Verses and Quotes"
       when "list"
