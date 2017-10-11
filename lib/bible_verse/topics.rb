@@ -14,7 +14,6 @@ class BibleVerse::Topics
     topic_2.title = "Encouraging Bible Verses and Quotes "
     topic_2.description = "The below Scriptures will offer encouragement in your daily life and provide inspiration and strength as you cope with life's challenges."
     topic_2.url = "http://www.biblestudytools.com/topical-verses/encouraging-bible-verses/"
-
     [topic_1, topic_2]
   end
 end

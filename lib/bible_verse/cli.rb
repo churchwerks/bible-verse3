@@ -7,6 +7,12 @@ class BibleVerse::CLI
 
   def list_topics
     @topics = BibleVerse::Topics.list_topics
+    @topics.each do |topic|
+      counter = 1
+      puts "  #{counter}.#{topic.category}"
+      counter += 1
+    end
+
   end
 
   def menu

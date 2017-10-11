@@ -20,7 +20,7 @@ class BibleVerse::CLI
     menu
   end
 ```
-The user is presented with a list of Bible Verse Topics and a menu of actions to take. When the user chooses a topic, a list of Bible verses which; correspond to the chosen topic, will be displayed. When the user selects a particular verse, a webpage for that Bible verse will be opened in their web browser.
+The user is presented with a list of Bible Verse Topics and a menu of actions to take. When the user chooses a topic; a list of Bible verses which correspond to the chosen topic, will be displayed. When the user selects a particular verse, a webpage for that Bible verse will be opened in their web browser.
 
 ## Bible-Verse CLI program
 The complete Bible-Verse CLI program can be found at my [GitHub Repository](https://github.com/churchwerks/bible-verse).
