@@ -32,9 +32,12 @@ class BibleVerse::CLI
       case input
       when "1"
         puts "Showing Bible Verses About Peace"
-
+        display_topic
+        display_verse
       when "2"
         puts "Showing Encouraging Bible Verses and Quotes"
+        display_topic
+        display_verse
       when "list"
         list_topics
       when "exit"
