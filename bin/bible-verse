@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "./lib/bible_verse"
-require "pry"
+require_relative '../lib/bible_verse'
 
 BibleVerse::CLI.new.call
