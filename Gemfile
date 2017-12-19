@@ -16,3 +16,6 @@ gem 'rake'
 #Other Stuff
 gem 'nokogiri'
 gem 'require_all'
+gem 'mechanize'
+gem 'logger'
+gem 'open-uri'

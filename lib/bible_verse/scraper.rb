@@ -1,0 +1,3 @@
+class BibleVerse::Scraper
+
+end
