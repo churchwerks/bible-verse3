@@ -1,14 +1,12 @@
 class BibleVerse::Topic
-  attr_accessor  :category, :title, :description, :url
+  attr_accessor  :title, :description, :url
   @@all = []
 
-  def self.new_from_featured_topics(t)
+  def self.new_from_featured_topic(t)
     self.new(
       t.css(".xl-h3.list-group-item-heading").text,
-      "https://www.biblestudytools.com/topical-verses/#{t.css(".xl-h3.list-group-item-heading").text}",
-      t.css("p").text,
-      t.css("a").attribute("href").value
-      )
+
+
   end
 
   def initialize(title=nil, category=nil, description=nil, url=nil)
@@ -16,7 +14,7 @@ class BibleVerse::Topic
     @title = title
     @description = description
     @url = url
-    @@all << self
+
   end
 
   def self.all
