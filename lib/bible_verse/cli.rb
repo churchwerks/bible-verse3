@@ -2,7 +2,7 @@ class BibleVerse::CLI
 
   def call
     puts "Topical Bible Verses"
-    BibleVerse::Tscraper.new.make_topics
+    #BibleVerse::Tscraper.new.make_topics
     binding.pry
     list_topics
     menu
