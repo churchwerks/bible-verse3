@@ -1,6 +1,5 @@
-class BibleVerse::Verse
+class BibleVerse::Verses
   attr_accessor :book, :chapter, :number, :body, :url
-  @@all_topics = []
   @@all_verses = []
 
   def self.list_verse
@@ -21,7 +20,4 @@ class BibleVerse::Verse
     [verse_1, verse_2]
   end
 
-  def scrape_verse
-
-  end
 end

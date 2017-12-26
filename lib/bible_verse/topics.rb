@@ -17,7 +17,16 @@ class BibleVerse::Topics
     [topic_1, topic_2]
   end
 
-  def scrape_topics
-
+  def self.new_from_featured_topics(t)
+    topic = Topics.new
+    topic.category = ""
+    topic.title = t.css(".xl-h3.list-group-item-heading").text
+    topic.description = t.css("p").text
+    topic.url = t.css("a").attribute("href").value
+    if topic.title != ""
+      topic.save
+    end
+    binding.pry
   end
+
 end
