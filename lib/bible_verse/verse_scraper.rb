@@ -1,4 +1,4 @@
-class BibleVerse::VerseScraper
+class BibleVerse::Vscraper
   def get_page(topic)
     Nokogiri::HTML(open("https://www.biblestudytools.com/#{topic}-bible-verses/"))
   end

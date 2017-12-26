@@ -1,32 +1,53 @@
-class BibleVerse::Topics
-  attr_accessor :category, :title, :description, :url
-
-  def self.list_topics
-
-    topic_1 = self.new
-    topic_1.category = "Peace Bible Verses"
-    topic_1.title = "Bible Verses About Peace"
-    topic_1.description = "Read verses that offer guidance on subjects such as peace of mind, love and peace, peacefulness and joy."
-    topic_1.url = "http://www.biblestudytools.com/topical-verses/peace-bible-verses/"
-
-    topic_2 = self.new
-    topic_2.category = "Encouraging Bible Verses"
-    topic_2.title = "Encouraging Bible Verses and Quotes "
-    topic_2.description = "The below Scriptures will offer encouragement in your daily life and provide inspiration and strength as you cope with life's challenges."
-    topic_2.url = "http://www.biblestudytools.com/topical-verses/encouraging-bible-verses/"
-    [topic_1, topic_2]
-  end
+class BibleVerse::Topic
+  attr_accessor  :category, :title, :description, :url
+  @@all = []
 
   def self.new_from_featured_topics(t)
-    topic = Topics.new
-    topic.category = ""
-    topic.title = t.css(".xl-h3.list-group-item-heading").text
-    topic.description = t.css("p").text
-    topic.url = t.css("a").attribute("href").value
-    if topic.title != ""
-      topic.save
-    end
-    binding.pry
+    self.new(
+      t.css(".xl-h3.list-group-item-heading").text,
+      "https://www.biblestudytools.com/topical-verses/#{t.css(".xl-h3.list-group-item-heading").text}",
+      t.css("p").text,
+      t.css("a").attribute("href").value
+      )
   end
 
+  def initialize(title=nil, category=nil, description=nil, url=nil)
+    @category = category
+    @title = title
+    @description = description
+    @url = url
+    @@all << self
+  end
+
+  def self.all
+    @@all
+  end
+
+  def best_dish
+    @best_dish ||= doc.xpath("//div[@class='c-4 nr nt']/ul[3]/li").text
+  end
+
+  def food_style
+    @food_style ||= doc.xpath("//div[@class='c-4 nr nt']/ul[2]/li").text
+  end
+
+  def contact
+    @contact ||= doc.xpath("//div[@class='c-4 nr nt']/ul[4]/li[1]").text.split("+").join(". Tel: +")
+  end
+
+  def head_chef
+    @head_chef ||= doc.xpath("//div[@class='c-4 nr nt']/ul[1]/li").text.split(" (pictured)").join("")
+  end
+
+  def website_url
+    @website_url ||= doc.xpath("//div[@class='c-4 nr nt']/ul[4]/li[2]/a").text
+  end
+
+  def description
+    @description ||= doc.xpath("//div[@class='c-8 nl nt']/p[3]").text
+  end
+
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
+  end
 end

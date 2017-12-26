@@ -2,17 +2,15 @@ class BibleVerse::CLI
 
   def call
     puts "Topical Bible Verses"
+    BibleVerse::Tscraper.new.make_topics
+    binding.pry
     list_topics
     menu
   end
 
   def list_topics
-    @topics = BibleVerse::Topics.list_topics
-    @topics.each do |topic|
-      counter = 1
-      puts "  #{counter}. #{topic.category}"
-      counter += 1
-    end
+    binding.pry
+    puts "list topics"
   end
 
   def display_topic

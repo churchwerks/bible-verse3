@@ -1,6 +1,10 @@
-class BibleVerse::Verses
+class BibleVerse::Verse
   attr_accessor :book, :chapter, :number, :body, :url
   @@all_verses = []
+
+  def self.save
+    @@all_verses << self
+  end
 
   def self.list_verse
     verse_1 = self.new
@@ -19,5 +23,22 @@ class BibleVerse::Verses
 
     [verse_1, verse_2]
   end
-
+  def make_verse
+    verse = Verse.new
+    post = self.get_page
+    verse.title = post.css("h1").text
+    verse.description = post.css("div.scripture div span:nth-child(2)").text.strip
+    verse.save
+  end
+  def print_verse
+    self.make_verse
+    Verse.all.each do |verse|
+      if verse.title != ""
+        puts "Verse: #{verse.title}"
+        puts "   #{verse.description}"
+      else
+        puts "ERROR"
+      end
+    end
+  end
 end
