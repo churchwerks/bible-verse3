@@ -1,39 +1,40 @@
 class BibleVerse::CLI
+
   def call
-    puts "Topical Bible Verses"
-    list_topics
-    menu
+    BibleVerse::Tscraper.new.make_topics
+    puts "Welcome to Bible Verses by Topic "
+    start
+  end
+
+  def start
+    puts ""
+    BibleVerse::Topic.all.each.with_index do |post, index|
+      puts ""
+      puts "#{index+1}. #{post.title}"
+      puts ""
+    end
+    puts "What Featured Topic would you like to see? Enter a number."
+    input = gets.strip.to_i
+    display_topic(input)
+  end
+
+  def display_topic(input)
+    puts "display_topic called with input = #{input}"
+    BibleVerse::Vscraper.new.make_verses
+    puts "What Verse would you like to see? Enter a number."
+    input = gets.downcase
+    display_verse(input)
+  end
+
+  def display_verse(input)
+    puts "display_verse called with input = #{input}"
+    puts "What Verse(V) or Topic(T) would you like to see? Enter V or T."
+    puts "Enter Q to exit the program."
+    input = gets.downcase
     goodbye
   end
 
-  def list_topics
-    puts "Topical Bible Verses"
-    puts <<~DOC
-      1. Peace Bible Verses - Bible Verses About Peace - Description
-      2. Encouraging Bible Verses - Encouraging Bible Verses and Quotes - Description
-    DOC
-  end
-
-  def menu
-    input = nil
-    while input != "exit"
-      puts "Enter the number of the Topical Bible Verses you would like to search:
-      or type list to see more, or exit to quit."
-      input = gets.strip.downcase
-      case input
-      when "1"
-        puts "Showing Bible Verses About Peace"
-      when "2"
-        puts "Showing Encouraging Bible Verses and Quotes"
-      when "list"
-        list_topics
-      else
-        puts "Not sure what you mean, type list or exit."
-      end
-    end
-  end
-
   def goodbye
-    puts "Peace be with you"
+    puts "goodbye called"
   end
 end

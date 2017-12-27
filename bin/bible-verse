@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
-require './lib/bible_verse'
+
+require_relative '../lib/bible_verse'
 
 BibleVerse::CLI.new.call
