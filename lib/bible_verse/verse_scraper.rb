@@ -7,9 +7,9 @@ class BibleVerse::Vscraper
     self.get_page.css(".list-group-item")
   end
 
-  def make_topics
-    scrape_topics.each do |t|
-      BibleVerse::Topics.new_from_featured_topics(t)
+  def make_verses
+    scrape_verses.each do |v|
+      BibleVerse::verse.new_from_featured_topics(v)
     end
   end
 end
