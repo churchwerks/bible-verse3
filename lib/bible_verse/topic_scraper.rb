@@ -8,14 +8,9 @@ class BibleVerse::Tscraper
     end
 
     def make_topics
-      self.get_topics.each do |post|
-        topic = Topic.new
-        topic.title = post.css(".xl-h3.list-group-item-heading").text
-        topic.description = post.css("p").text
-        topic.url = post.css("a").attribute("href").value
-        if topic.title != ""
-          topic.save
-        end
+      get_topics.each do |t|
+        BibleVerse::Topic.new_from_featured_topics(t)
+        binding.pry
       end
     end
 
