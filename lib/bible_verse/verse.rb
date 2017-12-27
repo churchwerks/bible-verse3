@@ -2,12 +2,12 @@ class BibleVerse::Verse
   attr_accessor :title, :description, :url
   @@all = []
 
-    def self.new_from_topic(post)
-      topic = self.new
-      verse.title = post.css("h1").text
-      verse.description = post.css("div.scripture div span:nth-child(2)").text.strip
-      if topic.title != ""
-        topic.save
+    def self.new_from_topic(v)
+      verse = self.new
+      verse.title = v.css(".list-group-item-heading").text
+      verse.description = v.css("div.scripture div span:nth-child(2)").text.strip
+      if verse.title != ""
+        verse.save
       end
     end
 
@@ -33,7 +33,4 @@ class BibleVerse::Verse
       self.all[id-1]
     end
 
-    def doc
-      @doc ||= Nokogiri::HTML(open(self.url))
-    end
   end

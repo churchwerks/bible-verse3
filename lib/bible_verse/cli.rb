@@ -38,7 +38,9 @@ class BibleVerse::CLI
   end
 
   def display_verses(url)
-    display_verse(1)
+    BibleVerse::Vscraper.get_verses(url)
+
+
   end
 
   def display_verse(input)

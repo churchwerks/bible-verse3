@@ -1,5 +1,5 @@
 class BibleVerse::Vscraper
-  def get_verses(url)
+  def self.get_verses(url)
     doc = Nokogiri::HTML(open("#{url}"))
     verses = doc.css(".list-group-item.bst-list-group-item-dark.no-top")
     verses.each do |v|
