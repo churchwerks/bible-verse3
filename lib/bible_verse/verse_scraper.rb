@@ -1,9 +1,9 @@
 class BibleVerse::Vscraper
-  def get_page(topic)
-    Nokogiri::HTML(open("https://www.biblestudytools.com/#{topic}-bible-verses/"))
+  def get_page(topic=faith)
+    Nokogiri::HTML(open("https://www.biblestudytools.com/topical-verses/#{topic}-bible-verses/"))
   end
 
-  def scrape_topics
+  def scrape_verses
     self.get_page.css(".list-group-item")
   end
 

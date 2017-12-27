@@ -1,7 +1,7 @@
 class BibleVerse::CLI
 
   def call
-    BibleVerse::Tscraper.new.make_topics
+    BibleVerse::Scraper.new.make_items
     puts "Welcome to Bible Verses by Topic "
     start
   end
@@ -16,5 +16,10 @@ class BibleVerse::CLI
       #puts "#{post.description}"
       #puts "#{post.url}"
     end
+    input = gets.strip.to_i
+  end
+
+  def select_topic
+
   end
 end

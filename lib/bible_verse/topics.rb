@@ -1,7 +1,7 @@
 class BibleVerse::Topic
 attr_accessor :title, :description, :url
 @@all = []
-
+#
   def self.new_from_featured_topics(post)
     topic = self.new
     topic.title = post.css(".xl-h3.list-group-item-heading").text

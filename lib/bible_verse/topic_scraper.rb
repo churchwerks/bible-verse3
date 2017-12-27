@@ -1,4 +1,4 @@
-class BibleVerse::Tscraper
+class BibleVerse::Scraper
     def get_page
       Nokogiri::HTML(open("https://www.biblestudytools.com/topical-verses/"))
     end
@@ -8,7 +8,7 @@ class BibleVerse::Tscraper
     end
 
     def make_topics
-      get_topics.each do |t|
+      get_items.each do |t|
         BibleVerse::Topic.new_from_featured_topics(t)
       end
     end

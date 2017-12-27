@@ -1,5 +1,5 @@
 class BibleVerse::Verse
-  attr_accessor :book, :chapter, :number, :body, :url
+  attr_accessor :book, :chapter, :number, :body, :url, :title, :description
   @@all_verses = []
 
   def self.save
