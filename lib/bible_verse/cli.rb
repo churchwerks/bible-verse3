@@ -20,7 +20,7 @@ class BibleVerse::CLI
 
   def display_topic(input)
     puts "display_topic called with input = #{input}"
-    BibleVerse::Vscraper.new.make_verses
+    BibleVerse::Topic.(1)
     puts "What Verse would you like to see? Enter a number."
     input = gets.downcase
     display_verse(input)
@@ -28,6 +28,7 @@ class BibleVerse::CLI
 
   def display_verse(input)
     puts "display_verse called with input = #{input}"
+    #BibleVerse::Vscraper.new.make_verses
     puts "What Verse(V) or Topic(T) would you like to see? Enter V or T."
     puts "Enter Q to exit the program."
     input = gets.downcase

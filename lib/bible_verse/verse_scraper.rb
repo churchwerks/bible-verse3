@@ -5,11 +5,12 @@ class BibleVerse::Vscraper
 
   def scrape_verses
     self.get_page.css(".list-group-item")
+    binding.pry
   end
 
   def make_verses
     scrape_verses.each do |v|
-      BibleVerse::Verse.list_verse
+      BibleVerse::Verse.make
     end
   end
 end
