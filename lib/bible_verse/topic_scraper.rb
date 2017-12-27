@@ -1,5 +1,4 @@
 class BibleVerse::Tscraper
-  #
     def get_page
       Nokogiri::HTML(open("https://www.biblestudytools.com/topical-verses/"))
     end

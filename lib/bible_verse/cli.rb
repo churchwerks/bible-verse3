@@ -20,7 +20,7 @@ class BibleVerse::CLI
 
   def display_topic(input)
     puts "display_topic called with input = #{input}"
-    BibleVerse::Topic.(1)
+    topic = BibleVerse::Topic.find(input)
     puts "What Verse would you like to see? Enter a number."
     input = gets.downcase
     display_verse(input)
@@ -35,6 +35,17 @@ class BibleVerse::CLI
     goodbye
   end
 
+
+  def print_verse
+    BibleVerse::Verse.all.each do |verse|
+      if verse.title != ""
+        puts "Verse: #{verse.title}"
+        puts "   #{verse.description}"
+      else
+        puts "ERROR"
+      end
+    end
+  end
   def goodbye
     puts "goodbye called"
   end
