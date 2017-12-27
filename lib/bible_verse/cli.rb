@@ -21,9 +21,24 @@ class BibleVerse::CLI
   def display_topic(input)
     puts "display_topic called with input = #{input}"
     topic = BibleVerse::Topic.find(input)
-    puts "What Verse would you like to see? Enter a number."
-    input = gets.downcase
-    display_verse(input)
+    puts ""
+    puts "#{topic.title}"
+    puts ""
+    puts "#{topic.description}"
+    puts ""
+    puts "#{topic.url}"
+    puts ""
+    url = topic.url
+    BibleVerse::Verse.all.each.with_index do |post, index|
+      puts ""
+      puts "#{index+1}. #{post.title}"
+      puts ""
+    end
+    display_verses(url)
+  end
+
+  def display_verses(url)
+    display_verse(1)
   end
 
   def display_verse(input)
