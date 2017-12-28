@@ -1,13 +1,12 @@
 class BibleVerse::CLI
-#
   def call
     BibleVerse::Tscraper.new.make_topics
     puts "Welcome to Bible Verses by Topic "
+    puts ""
     start
   end
 
   def start
-    puts ""
     BibleVerse::Topic.all.each.with_index do |post, index|
       puts ""
       puts "#{index+1}. #{post.title}"
@@ -28,27 +27,34 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
+    puts "Hit Enter to display the verses or Q to quit."
+    input = gets.downcase
     display_verses(url)
   end
 
   def display_verses(url)
     BibleVerse::Vscraper.get_verses(url)
+    counter = 0
     BibleVerse::Verse.all.each.with_index do |post, index|
-      puts ""
-      puts "#{index+1}. #{post.title}"
-      puts ""
-      #binding.pry
+      if post.title != ""
+        puts "#{index+1}. #{post.title}"
+        counter += 1
+      end
     end
-
-    puts "What Verse would you like to see? Enter a number."
-    input = gets.strip.to_i
-    verse = BibleVerse::Verse.find(input)
-    puts "Verse: #{verse.title}"
-    puts "   #{verse.description.strip}"
-    puts ""
+    if counter != 0
+      puts "What Verse would you like to see? Enter a number."
+      input = gets.strip.to_i
+      verse = BibleVerse::Verse.find(input)
+      puts "Verse: #{verse.title}"
+      puts "   #{verse.description.strip}"
+    end
   end
 
   def goodbye
+    puts ""
+    puts ""
     puts "Peace Be with You!"
+    puts ""
+    puts ""
   end
 end
