@@ -28,11 +28,11 @@ class BibleVerse::CLI
     puts ""
     url = topic.url
     puts "Hit Enter D to display the verses or Q to quit."
-    input = gets.strip.downcase
-    input == "q" ? goodbye : display_verses(url)
+    choice = gets.strip.downcase
+    choice == "q" ? goodbye : display_verses(url,input)
   end
 
-  def display_verses(url)
+  def display_verses(url,input)
     BibleVerse::Vscraper.get_verses(url)
     counter = 0
     BibleVerse::Verse.all.each.with_index do |post, index|
@@ -43,10 +43,14 @@ class BibleVerse::CLI
     end
     if counter != 0
       puts "What Verse would you like to see? Enter a number."
-      input = gets.strip.to_i
-      verse = BibleVerse::Verse.find(input)
+      number = gets.strip.to_i
+      verse = BibleVerse::Verse.find(number)
       puts "Verse: #{verse.title}"
       puts "   #{verse.description.strip}"
+    else
+      puts "There are no verses to display, Hit Enter to continue."
+      gets.strip
+      start
     end
   end
 
