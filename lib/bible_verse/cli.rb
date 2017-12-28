@@ -46,7 +46,11 @@ class BibleVerse::CLI
       number = gets.strip.to_i
       verse = BibleVerse::Verse.find(number)
       puts "Verse: #{verse.title}"
-      puts "   #{verse.description.strip}"
+      puts "   #{verse.description}"
+      puts ""
+      puts "Would you like to see another Verse V or Topic T?"
+      choice = gets.strip.downcase
+      choice == "t" ? start : display_verses(url,input)
     else
       puts "There are no verses to display, Hit Enter to continue."
       gets.strip
