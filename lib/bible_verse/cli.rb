@@ -27,7 +27,7 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
-    puts "Hit Enter D to display the verses or Q to quit."
+    puts "Enter D to display the verses or Q to quit."
     choice = gets.strip.downcase
     choice == "q" ? goodbye : display_verses(url,input)
   end
@@ -49,12 +49,14 @@ class BibleVerse::CLI
       puts "   #{verse.description}"
       puts ""
       puts "Would you like to see another Verse V or Topic T?"
+      BibleVerse::Verse.reset_all
       choice = gets.strip.downcase
       choice == "t" ? start : display_verses(url,input)
     else
-      puts "There are no verses to display, Hit Enter to continue."
-      gets.strip
-      start
+      puts "There are no verses to display, Hit Enter to continue, or Q to quit."
+      choice = gets.strip.downcase
+      choice == "q" ? goodbye : start
+
     end
   end
 
