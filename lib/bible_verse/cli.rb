@@ -27,9 +27,9 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
-    puts "Hit Enter to display the verses or Q to quit."
-    input = gets.downcase
-    display_verses(url)
+    puts "Hit Enter D to display the verses or Q to quit."
+    input = gets.strip.downcase
+    input == "q" ? goodbye : display_verses(url)
   end
 
   def display_verses(url)
