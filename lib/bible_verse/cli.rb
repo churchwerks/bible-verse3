@@ -1,5 +1,5 @@
 class BibleVerse::CLI
-
+#
   def call
     BibleVerse::Tscraper.new.make_topics
     puts "Welcome to Bible Verses by Topic "
@@ -37,7 +37,7 @@ class BibleVerse::CLI
       puts ""
       puts "#{index+1}. #{post.title}"
       puts ""
-      binding.pry
+      #binding.pry
     end
 
     puts "What Verse would you like to see? Enter a number."
