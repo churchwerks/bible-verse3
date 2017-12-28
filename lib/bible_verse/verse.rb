@@ -7,7 +7,6 @@ class BibleVerse::Verse
       verse.title = v.css(".list-group-item-heading").text
       verse.description = v.css(".scripture").text.strip
       verse.url = v.css("a").attribute("href").value
-      #binding.pry
       if verse.title != ""
         verse.save
       end
