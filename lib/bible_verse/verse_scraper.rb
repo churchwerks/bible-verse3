@@ -7,3 +7,4 @@ class BibleVerse::Vscraper
     end
   end
 end
+#

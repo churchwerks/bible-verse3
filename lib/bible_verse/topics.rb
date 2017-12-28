@@ -33,8 +33,4 @@ attr_accessor :title, :description, :url
   def self.find(id)
     self.all[id-1]
   end
-
-  def doc
-    @doc ||= Nokogiri::HTML(open(self.url))
-  end
 end

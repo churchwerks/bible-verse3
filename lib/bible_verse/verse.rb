@@ -5,7 +5,9 @@ class BibleVerse::Verse
     def self.new_from_topic(v)
       verse = self.new
       verse.title = v.css(".list-group-item-heading").text
-      verse.description = v.css("div.scripture div span:nth-child(2)").text.strip
+      verse.description = v.css(".scripture").text.strip
+      verse.url = v.css("a").attribute("href").value
+      #binding.pry
       if verse.title != ""
         verse.save
       end
@@ -32,5 +34,4 @@ class BibleVerse::Verse
     def self.find(id)
       self.all[id-1]
     end
-
   end

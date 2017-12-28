@@ -19,7 +19,6 @@ class BibleVerse::CLI
   end
 
   def display_topic(input)
-    puts "display_topic called with input = #{input}"
     topic = BibleVerse::Topic.find(input)
     puts ""
     puts "#{topic.title}"
@@ -29,41 +28,27 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
-    BibleVerse::Verse.all.each.with_index do |post, index|
-      puts ""
-      puts "#{index+1}. #{post.title}"
-      puts ""
-    end
     display_verses(url)
   end
 
   def display_verses(url)
     BibleVerse::Vscraper.get_verses(url)
-
-
-  end
-
-  def display_verse(input)
-    puts "display_verse called with input = #{input}"
-    #BibleVerse::Vscraper.new.make_verses
-    puts "What Verse(V) or Topic(T) would you like to see? Enter V or T."
-    puts "Enter Q to exit the program."
-    input = gets.downcase
-    goodbye
-  end
-
-
-  def print_verse
-    BibleVerse::Verse.all.each do |verse|
-      if verse.title != ""
-        puts "Verse: #{verse.title}"
-        puts "   #{verse.description}"
-      else
-        puts "ERROR"
-      end
+    BibleVerse::Verse.all.each.with_index do |post, index|
+      puts ""
+      puts "#{index+1}. #{post.title}"
+      puts ""
+      binding.pry
     end
+
+    puts "What Verse would you like to see? Enter a number."
+    input = gets.strip.to_i
+    verse = BibleVerse::Verse.find(input)
+    puts "Verse: #{verse.title}"
+    puts "   #{verse.description.strip}"
+    puts ""
   end
+
   def goodbye
-    puts "goodbye called"
+    puts "Peace Be with You!"
   end
 end

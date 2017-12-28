@@ -13,3 +13,4 @@ class BibleVerse::Tscraper
       end
     end
   end
+#
