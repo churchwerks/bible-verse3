@@ -33,17 +33,15 @@ class BibleVerse::CLI
   end
 
   def display_verses(url,input)
-    BibleVerse::Vscraper.get_verses(url)
-    counter = 0
-    BibleVerse::Verse.all.each.with_index do |post, index|
-      if post.title != ""
-        puts "#{index+1}. #{post.title}"
-        counter += 1
-      end
-    end
-    if counter != 0
+    BibleVerse::Vscraper.make_verses(url)
+    BibleVerse::Verse.all.each.with_index { |verse, index| puts "#{index+1}. #{verse.title}"}
+    if BibleVerse::Verse.empty?
+      puts "There are no verses to display, Hit Enter to continue, or Q to quit."
+      choice = gets.strip.downcase
+      choice == "q" ? goodbye : start
+    else
       puts "What Verse would you like to see? Enter a number, or enter zero 0 to quit."
-      number = gets.strip.to_i
+      number = gets.to_i
       if number != 0
         verse = BibleVerse::Verse.find(number)
         puts "Verse: #{verse.title}"
@@ -52,18 +50,14 @@ class BibleVerse::CLI
         puts "Would you like to see another Verse V or Topic T or Quit?"
         BibleVerse::Verse.reset_all
         choice = gets.strip.downcase
-          if choice == "t"
-            start
-          elsif choice == "v"
-          display_verses(url,input)
-          else
-            goodbye
-          end
+        if choice == "t"
+          start
+        elsif choice == "v"
+        display_verses(url,input)
+        else
+          goodbye
+        end
       end
-    else
-      puts "There are no verses to display, Hit Enter to continue, or Q to quit."
-      choice = gets.strip.downcase
-      choice == "q" ? goodbye : start
     end
   end
 
