@@ -27,15 +27,13 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
-    puts "Enter D to display the verses or Q to quit."
-    choice = gets.strip.downcase
-    choice == "q" ? goodbye : display_verses(url,input)
+    display_verses(url,input)
   end
 
   def display_verses(url,input)
     BibleVerse::Vscraper.make_verses(url)
     BibleVerse::Verse.all.each.with_index { |verse, index| puts "#{index+1}. #{verse.title}"}
-    if BibleVerse::Verse.empty?
+    if BibleVerse::Verse.all.empty?
       puts "There are no verses to display, Hit Enter to continue, or Q to quit."
       choice = gets.strip.downcase
       choice == "q" ? goodbye : start
