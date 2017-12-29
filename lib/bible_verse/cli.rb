@@ -1,6 +1,7 @@
 class BibleVerse::CLI
   def call
     BibleVerse::Tscraper.new.make_topics
+    puts ""
     puts "Welcome to Bible Verses by Topic "
     puts ""
     start
@@ -45,13 +46,13 @@ class BibleVerse::CLI
         puts "Verse: #{verse.title}"
         puts "   #{verse.description}"
         puts ""
-        puts "Would you like to see another Verse V or Topic T or Quit?"
+        puts "Would you like to see another Verse V or Topic T or Quit Q?"
         BibleVerse::Verse.reset_all
         choice = gets.strip.downcase
         if choice == "t"
           start
         elsif choice == "v"
-        display_verses(url,input)
+          display_verses(url,input)
         else
           goodbye
         end
