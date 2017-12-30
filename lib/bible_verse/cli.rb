@@ -28,7 +28,9 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
-    display_verses(url,input)
+    puts "Would you like to see see the Verses for this Topic or another Topic? Enter V or T"
+    choice = gets.strip.downcase
+    choice == "v" ? display_verses(url,input) : start
   end
 
   def display_verses(url,input)
