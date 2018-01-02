@@ -15,7 +15,7 @@ class BibleVerse::CLI
     end
     puts "What Featured Topic would you like to see? Enter a number, or enter zero 0 to quit."
     input = gets.to_i
-    input == "0" ? goodbye : display_topic(input)
+    input == 0 ? goodbye : display_topic(input)
   end
 
   def display_topic(input)
@@ -28,7 +28,9 @@ class BibleVerse::CLI
     puts "#{topic.url}"
     puts ""
     url = topic.url
-    display_verses(url,input)
+    puts "Would you like to see see the Verses for this Topic or another Topic? Enter V or T"
+    choice = gets.strip.downcase
+    choice == "v" ? display_verses(url,input) : start
   end
 
   def display_verses(url,input)
